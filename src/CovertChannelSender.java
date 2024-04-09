@@ -3,6 +3,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.Scanner;
 
 public class CovertChannelSender {
     public static void main(String[] args) {
@@ -10,8 +11,7 @@ public class CovertChannelSender {
             Socket socket = new Socket("localhost", 12345);
 
             OutputStream outputStream = socket.getOutputStream();
-
-            String data = "Hello, receiver!";
+            String data = "this is the data to be sent!";
             for (byte c : data.getBytes(StandardCharsets.UTF_8)) {
                 sendByte(c, outputStream);
             }
