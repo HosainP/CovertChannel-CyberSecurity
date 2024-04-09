@@ -22,11 +22,9 @@ public class CovertChannelReceiver {
                 System.out.print(bit);
             }
 
-            System.out.println("\nReceived message: " + message.toString());
-
             byte[] bytes = BitListToBytes(message.toString());
             String extractedString = new String(bytes);
-            System.out.println("Extracted string: " + extractedString);
+            System.out.println("\nExtracted string: " + extractedString);
             socket.close();
             serverSocket.close();
         } catch (IOException e) {
@@ -39,7 +37,7 @@ public class CovertChannelReceiver {
         int bit = inputStream.read();
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        if (duration < 500) {
+        if (duration < 10) {
             return 0;
         } else if (duration < 1000) {
             return 1;

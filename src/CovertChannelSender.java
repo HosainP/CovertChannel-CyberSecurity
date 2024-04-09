@@ -3,7 +3,6 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
-import java.util.Scanner;
 
 public class CovertChannelSender {
     public static void main(String[] args) {
@@ -11,7 +10,7 @@ public class CovertChannelSender {
             Socket socket = new Socket("localhost", 12345);
 
             OutputStream outputStream = socket.getOutputStream();
-            String data = "this is the data to be sent!";
+            String data = "super secret message";
             for (byte c : data.getBytes(StandardCharsets.UTF_8)) {
                 sendByte(c, outputStream);
             }
@@ -28,13 +27,13 @@ public class CovertChannelSender {
             int bit = (bbyte >> i) & 1; // Extract the current bit
             if (bit == 0) {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
